@@ -1,4 +1,4 @@
-MAPS 2.0
+Masset2 (maps2)
 ============
 The second revision of My Asset Pipeline Server. 
 Goal: Achieve a high level of general purpose backend code comparable to Express without a heavy reliance on external packages.
