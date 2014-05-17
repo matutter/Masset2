@@ -13,12 +13,12 @@ jade
 
 DB create statements
 ============
-1. DB jade generated pages require a collection for each jade template
+1 DB jade generated pages require a collection for each jade template
 ```JavaScript
 db.home.insert({ title:"home page" })
 ```
 
-2. User authentication requires two collections, one for hashing last, another for users
+2 User authentication requires two collections, one for hashing last, another for users
 ```JavaScript
 db.cipher.insert( name:"primary cipher", cipher:"xxxxxxxxxxxxxxxxxxxxxxxxxxx" )
 db.users.insert( name:"Space Ghost", admin:true, hash:"..." )
