@@ -11,8 +11,8 @@ var env = new Object
   env.pages = new Object
 		env.pages.home = 'home'
 		env.pages.error = 'error'
-		env.pages.all = [ 'home', 'team', 'contact', 'parts', 'software', 'progress', 'admin' ]
-		env.pages.regular = [ 'home', 'team', 'contact', 'parts', 'software', 'progress' ]
+		env.pages.all = [ 'home', 'team', /*'contact',*/ 'parts', 'software', 'progress', 'admin' ]
+		env.pages.regular = [ 'home', 'team', /*'contact',*/ 'parts', 'software', 'progress' ]
 		env.pages.special = [ 'admin' ]
 
   // server variables
@@ -26,6 +26,9 @@ var env = new Object
 
   // database address
   env.db = 'mongodb://127.0.0.1:27017/mxx'
+
+  // for occasional routines 
+  env.runLater = []
 
 
 exports.env = env

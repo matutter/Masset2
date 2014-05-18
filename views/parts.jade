@@ -7,19 +7,19 @@ block content
         span.glyphicon.glyphicon-chevron-down
       .shoot
       .generate-body
-        form(method="post" name='parts')
+        form(method="post" target="self" name='parts')
           h1.page-header Add new part
           label Price
           label.pull-right.shade1 *
           input.form-control#price(placeholder="$$$" type="number" name="price")
           label URL purchased from
           label.pull-right.shade1 *
-          //span.btn.btn-default.btn-file Browse
-          //  input(type="file" name="image")
           input.form-control#url(placeholder="http://" name="url")
           label Part name
           label.pull-right.shade1 *
           input.form-control#name(placeholder="..." name="name")
+          span.dropper#dropper Drop Image here
+          input#uriImage(hidden name="img")
           label Specs list
           label.pull-right.blue1 leave blank to omit
           table.table
@@ -37,11 +37,16 @@ block content
 
   section.container.parts
     - each part in docs
-      .col-sm-5.part-box
+      .col-sm-4.part-box
         - if(admin && user)
           .tab
-            span.glyphicon.glyphicon-cog 
-        img.img-responsive( data-src="holder.js/270x200/#101010:#980f13" src=part.img alt=part.img width="200" height="200")
+            span.glyphicon.glyphicon-cog
+          .tab.tab-over 
+            a.delete(id=part._id page=page) Delete?
+        - if( part.img )
+          img.img-responsive(src=part.img alt=part.img width="270" height="200")
+        - else
+          img.img-responsive( data-src="holder.js/270x200/#101010:#980f13" src=part.img alt=part.img )
         span.link
           a(href=part.url) Vendor link
         .price $#{part.price}

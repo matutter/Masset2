@@ -33,23 +33,7 @@ function start (db, name, pass, cb) {
 	})
 
 }
-
-function verify(token) {
-	return CurrentSession[token]==undefined?0:1
-}
-function verify_cookie(cookie) {
-	if ( cookie == undefined ) return 0
-	var pos = cookie.indexOf(ENV.cookie) + ENV.cookie.length + 1
-	var token = cookie.substr(pos, pos+env.cookie.tokenLength)
-	return CurrentSession[token]==undefined?0:1
-}
-function make_cookie(token) {
-	var d = new Date();
-	d.setTime(d.getTime()+expireTime);
-	return env.cookie.name + "=" + token + "; " + "expires=" + d.toGMTString();
-}
-
-
+//////////////////////// if use presents cookie see if the activity should extend session
 function checkin(req) {
 	if ( req == undefined ) return undefined
 
@@ -60,12 +44,34 @@ function checkin(req) {
 		console.log(' . session update ')
 		delete CurrentSession[token].expire
 		CurrentSession[token].expire = setTimeout(function() {
-			//console.log( ' . session timeout ' )
 			delete CurrentSession[token]
 		}, expireTime)
-		return CurrentSession[token].user 
+		return CurrentSession[token] 
 	}
 	else return undefined
+}
+
+
+/*function backupSession(db) {
+	//console.log( CurrentSession )
+	db.collection('sessions').insert({last:CurrentSession}, function(err, efct) {
+		if( err || !efct ) console.log( err )
+	})
+}*/
+
+function verify(token) {
+	return CurrentSession[token]==undefined?0:1
+}
+function verify_cookie(cookie) {
+	if ( cookie == undefined ) return 0
+	var pos = cookie.indexOf(ENV.cookie) + ENV.cookie.length + 1
+	var token = cookie.substr(pos, pos+env.cookie.tokenLength)
+	return verify(token)
+}
+function make_cookie(token) {
+	var d = new Date();
+	d.setTime(d.getTime()+expireTime);
+	return env.cookie.name + "=" + token + "; " + "expires=" + d.toGMTString();
 }
 
 ////////////////////////// recover & initialize state
@@ -74,7 +80,6 @@ function recover(db, key) {
 		module.cipher = exports.cipher = reccipher
 	})
 }
-
 function getCipher(db, c_name, cb) {
 	db.collection('cipher').findOne({name:c_name}, function(err,cursor) {
 		cb( err, cursor.cipher )

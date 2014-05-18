@@ -43,7 +43,20 @@ function startup (route, handler, db, session) {
 				else
 					socket.emit('login', session.cookie(token) )
 			})
-		} )
+		})
+		// delete something by id given page
+		// just moves it to a trash collection
+		socket.on('delete', function(s) {
+			mongodb = require('mongodb')
+			db.collection(s.page).findAndRemove({_id: new mongodb.ObjectID(s.id)}, function(err, cursor) {
+				if( err || !cursor ) console.log(err)
+				else
+					db.collection('trash').insert(cursor, function(err, efct) {
+						if(err) console.log( err )
+					})
+			})
+		})
+
 
 	})
 }// end startup
@@ -51,7 +64,7 @@ function startup (route, handler, db, session) {
 function validate(p, db, req) {
 	var doc = new Object
 	if(p.form == 'parts') { // validate for parts
-		if( p.price == '' || p.image == ''|| p.name == '' )
+		if( p.price == '' || p.url == ''|| p.name == '' )
 			console.log( '******** cant parse *********' )
 		else {
 			doc.left = new Array

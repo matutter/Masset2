@@ -14,7 +14,7 @@ function router(req,res,handle,db,session, user) {
   else
   // route for regular page
   if( typeof handle.pagePath[base] === 'function' )
-    return handle.pagePath[base](res,base,db,session,session.checkin(req.headers.cookie) )
+    return handle.pagePath[base](res,base,db,session.checkin(req.headers.cookie) )
   else
   // is it a rare special case?
   if( typeof handle.specialCase[pathname] === 'string')
