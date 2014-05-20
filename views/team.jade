@@ -1,6 +1,14 @@
 extends layout
 
 block content
+  - if(admin && user)
+    generate.grad(id="")
+      .hook
+        span.glyphicon.glyphicon-chevron-down
+      .shoot
+      .generate-body
+          h1.page-header Nothing here
+
   section.container.team
     .col-sm-6.team-box
       img.img-circle.img-responsive.team-avatar(src="lesther.jpg" width="200")

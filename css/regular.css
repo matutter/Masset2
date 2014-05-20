@@ -14,8 +14,13 @@ html {
 .grey-27 { color: #262626 ; }
 
 .btn, a {
-	color: #a1a1a1 !important;
+	color: #a1a1a1;
 	font-size: 1.2em;
+	text-decoration: none;
+}
+
+.btn:hover, a:hover {
+	color: #fff;
 	text-decoration: none;
 }
 
@@ -31,7 +36,7 @@ html {
 	color: #c42026 !important;
 }
 .navbar-nav>.active:after {
-	z-index: 9999;
+	z-index: 9998;
 	top: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -61,21 +66,34 @@ nav {
 	box-shadow: 0px 0px 0px #000;
 }
 body {
-	font-family: "Avenir W02", Avenir, Futura, "Gill Sans", Calibri, "Century Gothic", "AppleGothic", Helvetica, Arial, sans-serif;
-	color: #350a0a;
-	background-color: #fefefe;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.big {
+	font-size: 60px !important;
+	font-weight: 100;
+
 }
 .jumbotron {
-	color: #fff;
-	height: 500px;
-	font-weight: bold;
-	line-height: 1.4em;
-	text-align: left;
-	font-size: 1.2em;
-	border: 0 solid #e92429;
-	border-width: 0 0 5px 0;
-	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+	text-transform: uppercase;
+	text-align: right;
+	color: #fefefe;
+	background-color: #333;
 	background-size: cover !important;
+	position: absolute;
+	bottom:0;
+	left:0;
+	right: 0;
+	top:56px;
+	margin: 0;
+	text-shadow: 1px 1px 4px #000;
+}
+.whole {
+	position: absolute;
+	bottom:0;
+	left:0;
+	right: 0;
+	top:0;
 }
 .btn-home {
 	border-color: transparent !important;
@@ -115,12 +133,12 @@ body {
 	padding: 5px !important;
 	margin: 7px 0 0px 0;
 }
-.part-box h4, .part-box label {
-	overflow: hidden;
+
+.img-wrap {
+	margin: auto !important;
+	padding: 0 !important;
 }
-.part-box {
-	
-}
+
 .uri, .uri-img {
 	color:#fff;
 	overflow: visible;
@@ -148,18 +166,6 @@ textarea.uri { color: black; }
 .price {
 	text-align: right !important;
 }
-.parts .tab {
-	left: 15px !important;
-	z-index: 101;
-}
-.tab-over {
-	z-index: 99 !important;
-	width: 50%;
-}
-.tab-over a {
-	color: #fff !important;
-	font-size: 1.0em;
-}
 span.link {
 	display: block;
 	margin-top: -28px;
@@ -168,6 +174,11 @@ span.link {
 }
 .col-part {
 	max-width: 240px !important;
+}
+.part-box {
+	background-color: #101010;
+	color: #fff !important;
+	margin: 15px 0 0 0;
 }
 .img-part {
 	margin: 0px;
@@ -307,10 +318,30 @@ span.link {
 	background-color: #e1ffff;
 	font-size: 1.7em;
 }
-
+.part-box a {
+	cursor: pointer;
+}
+.tab-box {
+	position: relative;
+	float: left;
+	margin: 0;
+	margin-right: -28px;	
+}
+.tab-over {
+	z-index: 99 !important;
+	width: 200px;
+	position: absolute !important;
+	top: 0;
+	left: 0 !important;
+}
+a.delete{
+	color: #fff !important;
+	font-size: 1.0em;
+	cursor: pointer;
+}
 .hook, .tab  {
     position: absolute;
-    z-index: 99;
+    z-index: 100;
     top: 0;
     left: 0;
     padding: 3px 8px 0 6px;
@@ -429,4 +460,59 @@ debug {
 .btn-default:focus {
 	outline: none;
 	color: #e92429 !important;
+}
+
+
+/* Carousel base class */
+.carousel {
+	position: absolute;
+	top:56px;
+	bottom: 0;
+	width: 100%;
+	background: #333;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+   vertical-align: top;
+  text-align: right;
+  top:0;
+}
+.carousel-control, .left, .right {
+	background-image: none !important;
+}
+.carousel-caption h1 {
+	font-size: 60px;
+	font-weight: bold;
+}
+.carousel-caption p {
+	font-size: 26px;
+}
+
+/* Declare heights because of positioning of img element */
+.item {
+  background-color: #333;
+  background-size: cover !important;
+ 	height:  100%  !important;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 100%;
+}
+html,body {
+	height:100%;
+}
+.carousel,.item, .active {
+	height: calc( 100% - 56px);
+}
+.carousel-inner {
+	height:100%;
+}
+
+@media screen(max-width: 758px) {
+
+
 }

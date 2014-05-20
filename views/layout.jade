@@ -4,19 +4,11 @@ html
     link(rel='stylesheet', href='bootstrap.min.css')
     link(rel='stylesheet', href='regular.css')
     title #{page}
-  body
+  body(id=page)
     //debug
     nav.navbar.navbar-default(role="navigation")
       .container-fluid
-        .navbar-header
-          button.navbar-toggle(type='button' data-toggle='collapse' data-target='#nav-collapse')
-            span.sr-only Toggle Navbar 
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand.sr-only(href='/') The MXX Team
-
-      .collapse.navbar-collapse#nav-collapse
+        
         .container
           ul.nav.navbar-nav
             - each link in nav.left
@@ -29,9 +21,10 @@ html
           ul.nav.navbar-nav.navbar-right
             - if( user )
               li
-                form(method="post")
-                  input(hidden name="token" value=token)
-                  button.btn.logout(name="user" value=user) Logout #{user}
+                form#logout(method="post")
+                  input#token(hidden name="token" value=token)
+                  input#user(hidden name="user" value=user)
+                  button.btn.logout(name="form" value="logout") Logout #{user}
             - each link in nav.right
               - if( link == page )
                 li.active(id='#{link}')
@@ -46,7 +39,18 @@ html
 
   footer
     script(type='text/javascript' src='jquery.js')
-    - if( page == "parts" )
+    - if( page == "parts" || page == "home" )
       script(type='text/javascript' src='holder.js')
     script(type='text/javascript' src="/socket.io/socket.io.js")
     script(type='text/javascript' src='regular.js')
+    script(type='text/javascript' src='bootstrap.min.js')
+
+.navbar-header
+          button.navbar-toggle(type='button' data-toggle='collapse' data-target='#nav-collapse')
+            span.sr-only Toggle Navbar 
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.sr-only(href='/') The MXX Team
+
+      .collapse.navbar-collapse#nav-collapse

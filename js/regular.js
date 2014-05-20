@@ -26,8 +26,13 @@ $(document).ready(function(){
 		socket.emit('delete',{id:$(this).attr('id'),page:$(this).attr('page')})
 		$(this).parent().parent().fadeOut();
 	})
-	$('.logout').click(function(){
-		
+	$("form#logout").submit(function (e) {
+		e.preventDefault()
+		socket.emit('logout', {user:$('#user').val(),token:$('#token').val()})
+		setTimeout(function(){
+			window.location.reload(1);
+		}, 100)
+
 	})
 	// because Jquery on() and bind() werent giving me the correct event
 	try{
@@ -43,7 +48,6 @@ $(document).ready(function(){
 	function preventDefault(event) {
 	    event.preventDefault()
 	    event.stopPropagation()
-	   
 	}
 	$('.dropper').on('drop', function(event){
 		if(event.originalEvent.dataTransfer){

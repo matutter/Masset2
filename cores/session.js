@@ -14,7 +14,6 @@ function salt(i) {
 
 function start (db, name, pass, cb) {
 	var hash = crypto.createHmac('sha512', module.cipher).update(pass).digest('base64');
-
 	db.collection('users').findOne({name:name,hash:hash}, function(err, cursor) {
 		if( err || !cursor) { 
 			return cb( 'password or username did not match', undefined )
@@ -31,7 +30,11 @@ function start (db, name, pass, cb) {
 			return cb(0, session.key)
 		}	
 	})
-
+}
+function end(user,token) {
+	if( CurrentSession[token] != undefined )
+		if( CurrentSession[token].user.name == user )
+			delete CurrentSession[token]
 }
 //////////////////////// if use presents cookie see if the activity should extend session
 function checkin(req) {
@@ -51,14 +54,24 @@ function checkin(req) {
 	else return undefined
 }
 
-
-/*function backupSession(db) {
+////////////////////////// puts all session data into a DB for recovery, call periodically, or on shut down
+function backupSession(db) {
+	if( CurrentSession == undefined ) return 0
 	//console.log( CurrentSession )
-	db.collection('sessions').insert({last:CurrentSession}, function(err, efct) {
+	
+	var backup = []
+	for(var each in CurrentSession) {
+		var temp = new Object
+		temp.user = CurrentSession[each].user
+		temp.key  = CurrentSession[each].key
+		backup.push( temp )
+	}
+
+	db.collection('sessions').update({backup:"last"},{backup:"last",sessionData:backup}, function(err, efct) {
 		if( err || !efct ) console.log( err )
 	})
-}*/
-
+}
+////////////////////////// see if token is pre-authorized
 function verify(token) {
 	return CurrentSession[token]==undefined?0:1
 }
@@ -79,6 +92,15 @@ function recover(db, key) {
 	getCipher(db,key, function(err, reccipher) {
 		module.cipher = exports.cipher = reccipher
 	})
+	db.collection('sessions').findOne({}, function(err,cursor){
+		for(var each in cursor.sessionData) {
+			CurrentSession[cursor.sessionData[each].key] = cursor.sessionData[each]
+			CurrentSession[cursor.sessionData[each].key].expire = setTimeout(function() {
+				delete CurrentSession[cursor.sessionData[each].key]
+			}, expireTime)
+		}
+		console.log( '* sessions restored ' )
+	})
 }
 function getCipher(db, c_name, cb) {
 	db.collection('cipher').findOne({name:c_name}, function(err,cursor) {
@@ -86,11 +108,13 @@ function getCipher(db, c_name, cb) {
 	})
 }
 
+exports.end = end
 exports.start = start
 exports.cipher = cipher
-exports.checkin = checkin
 exports.verify = verify
+exports.checkin = checkin
 exports.recover = recover
-exports.verify_cookie = verify_cookie
 exports.cookie = make_cookie
 exports.getCipher = getCipher
+exports.backup = backupSession
+exports.verify_cookie = verify_cookie

@@ -13,6 +13,10 @@ function startup (route, handler, db, session) {
 	io	= require('socket.io').listen(app, { log: false }).set('log level', 1)
 	session.recover(db, 'primary')
 
+	setInterval(function() {
+		session.backup(db)
+	}, 1 * 60 * 1000);
+
 	startupMessage(app)
 
 	function onRequest(request, response) {
@@ -23,11 +27,11 @@ function startup (route, handler, db, session) {
 			})
 		}
 		request.on('end', function() {
-			validate(qs.parse(body), db, request)
+			validate(qs.parse(body), db, request, session)
 		})
 
 		route(request,response,handler,db,session)
-	}
+	} // END onRequest
 
 	io.sockets.on('connection', function (socket) {
 		// login attempt to start a session
@@ -43,6 +47,10 @@ function startup (route, handler, db, session) {
 				else
 					socket.emit('login', session.cookie(token) )
 			})
+		})
+		// destroy session before user reconnects
+		socket.on('logout', function(s) {
+			session.end(s.user,s.token)
 		})
 		// delete something by id given page
 		// just moves it to a trash collection
@@ -61,11 +69,11 @@ function startup (route, handler, db, session) {
 	})
 }// end startup
 
-function validate(p, db, req) {
+function validate(p, db, req, session) {
 	var doc = new Object
 	if(p.form == 'parts') { // validate for parts
 		if( p.price == '' || p.url == ''|| p.name == '' )
-			console.log( '******** cant parse *********' )
+			;//console.log( '******** cant parse *********' )
 		else {
 			doc.left = new Array
 			doc.right= new Array
@@ -82,6 +90,9 @@ function validate(p, db, req) {
 			}
 			add(doc,db)
 		}
+	}
+	else if(p.form == 'home') {
+		add(p,db)
 	}
 
 	//for( var rec in doc)

@@ -12,7 +12,7 @@ var env = new Object
 		env.pages.home = 'home'
 		env.pages.error = 'error'
 		env.pages.all = [ 'home', 'team', /*'contact',*/ 'parts', 'software', 'progress', 'admin' ]
-		env.pages.regular = [ 'home', 'team', /*'contact',*/ 'parts', 'software', 'progress' ]
+		env.pages.regular = [ 'home', 'team', /*'contact', */'parts'/*, 'software', 'progress'*/ ]
 		env.pages.special = [ 'admin' ]
 
   // server variables
