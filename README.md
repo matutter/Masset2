@@ -1,4 +1,4 @@
-Masset2 (maps2)
+Masset2
 ============
 The second revision of My Asset Pipeline Server. 
 Goal: Achieve a high level of general purpose backend code comparable to Express without a heavy reliance on external packages.
@@ -26,8 +26,9 @@ db.users.insert( name:"Space Ghost", admin:true, hash:"..." )
 
 Session
 ============
-Achieved by a 512byte token generator, tokens are retrieved through cookies.
-This currently depends on socket.io to send cookies. 
+| Achieved by a 512byte token generator
+| Client-side tokens are stored in cookies.
+| This currently depends on socket.io to send cookies. 
 ```JavaScript
 db.sessions.create({ backup:"last", sessionData:null })
 ```
