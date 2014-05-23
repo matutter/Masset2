@@ -13,12 +13,12 @@ jade
 
 DB setup
 ============
-1 DB jade generated pages require a collection for each jade template
+DB jade generated pages require a collection for each jade template
 ```JavaScript
 db.home.insert({ title:"home page" })
 ```
 
-2 User authentication requires two collections, one for hashing last, another for users
+User authentication requires two collections, one for hashing last, another for users
 ```JavaScript
 db.cipher.insert( name:"primary cipher", cipher:"xxxxxxxxxxxxxxxxxxxxxxxxxxx" )
 db.users.insert( name:"Space Ghost", admin:true, hash:"..." )
@@ -26,9 +26,9 @@ db.users.insert( name:"Space Ghost", admin:true, hash:"..." )
 
 Session
 ============
-| Achieved by a 512byte token generator
-| Client-side tokens are stored in cookies.
-| This currently depends on socket.io to send cookies. 
+Achieved by a 512byte token generator. <br>
+Client-side tokens are stored in cookies. <br>
+This currently depends on socket.io to send cookies. <br> 
 ```JavaScript
 db.sessions.create({ backup:"last", sessionData:null })
 ```
