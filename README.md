@@ -11,7 +11,7 @@ mongodb
 socket.io
 jade
 
-DB create statements
+DB setup
 ============
 1 DB jade generated pages require a collection for each jade template
 ```JavaScript
@@ -24,9 +24,10 @@ db.cipher.insert( name:"primary cipher", cipher:"xxxxxxxxxxxxxxxxxxxxxxxxxxx" )
 db.users.insert( name:"Space Ghost", admin:true, hash:"..." )
 ```
 
-
-
 Session
 ============
 Achieved by a 512byte token generator, tokens are retrieved through cookies.
 This currently depends on socket.io to send cookies. 
+```JavaScript
+db.sessions.create({ backup:"last", sessionData:null })
+```
