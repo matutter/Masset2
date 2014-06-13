@@ -1,31 +1,37 @@
 {
-  "name": "Masset2",
-  "version": "2.0.0",
-  "description": "Masset 2, MyAssetPipelineServer2 is a gerneral purpose quick build node.js app server.",
-  "main": "app.js",
-  "dependencies": {
-    "jade": "~1.3.1",
-    "socket.io": "~0.9.16",
-    "mongodb": "~1.4.4"
+  "name": "Mat-Utter-Dot-Com",
+  "version": "1.1.0",
+  "description": "Mat Utter's software Blog",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "Mathew Utter",
+    "email": "matutter4@gmail.com",
+    "url": "http://www.matutter.com/"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "homepage": "http://www.matutter.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matutter/Masset2"
+    "url": "https://github.com/openshift/origin-server"
   },
-  "keywords": [
-    "nodejs",
-    "web",
-    "application",
-    "framework"
-  ],
-  "author": "Mat Utter",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/matutter/Masset2/issues"
+
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
   },
-  "homepage": "https://github.com/matutter/Masset2"
+
+  "dependencies": {
+    "jade": "",
+    "socket.io": "",
+    "mongodb": ""
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": false,
+  "main": "startApp.js"
 }

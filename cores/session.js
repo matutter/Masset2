@@ -1,4 +1,4 @@
-var   env = require('./env').env
+var local = {}
 	, crypto = require('crypto')
 	, CurrentSession = {}
 	, expireTime = 2400000 // = 40 minutes
@@ -118,3 +118,4 @@ exports.cookie = make_cookie
 exports.getCipher = getCipher
 exports.backup = backupSession
 exports.verify_cookie = verify_cookie
+exports.locals = local
