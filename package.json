@@ -27,7 +27,8 @@
   "dependencies": {
     "jade": "",
     "socket.io": "",
-    "mongodb": ""
+    "mongodb": "",
+    "archy":""
   },
   "devDependencies": {},
   "bundleDependencies": [],

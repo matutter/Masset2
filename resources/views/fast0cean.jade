@@ -1,0 +1,81 @@
+extends layout
+
+block content
+
+  // nav end
+  .jumbotron(style='text-align:center;').nostyle
+    .container
+      h1 @CodeMassively
+        p
+          strong "Write programs, earn currency."
+        p
+          ul.breadcrumb().small-font
+            li
+              a(href='#') Website
+            li.active Me
+
+  .container
+
+    .col-sm-6
+      .label-out
+        span.label.label-info Twitter
+        span.label.label-default @matutter
+      a.twitter-timeline(data-dnt='true', href='https://twitter.com/matutter', data-widget-id='481623389430239232') Tweets by @matutter
+        script
+          | !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+
+    .col-sm-6
+      .row
+        .panel.panel-default.nostyle
+          .panel-body.nostyle
+            .col-sm-4.nostyle
+              .new-box
+                .new-inner
+                  .new-title title
+                  .new-desc 
+                    .spinner
+                    p.center loading
+            .col-sm-4.nostyle
+              .new-box
+                .new-inner
+                  .new-title title
+                  .new-desc
+                    .spinner 
+                    p.center loading
+            .col-sm-4.nostyle
+              .new-box
+                .new-inner
+                  .new-title title
+                  .new-desc
+                    .spinner
+                    p.center loading
+      .row
+        .panel.fillin.nostyle !{gitActivity}
+
+      .row
+        .panel.panel-default
+            .panel-heading Work and Tutoring 
+              strong Fall 2014
+              .panel-body
+                | TBA
+
+
+footer
+  .container
+    .col-lg-12
+      ul.list-unstyled
+        li Made by 
+          a(href="http://www.github.com/matutter") Mat Utter
+          | . Contact me at 
+          a(href='mailto:admin@codemassively.com') mat@codemassively.com.
+        li I maintain this code right 
+          a(href="https://github.com/matutter/Massively") here on Github
+          | .
+        li Built on 
+          a(href='http://nodejs.org/') NodeJS 
+          | for 
+          a(href='https://github.com/matutter/Masset2') Masset
+          | .
+        li Style based on 
+          a(href='http://bootswatch.com/simplex/') Simplex. 

@@ -1,25 +1,9 @@
-Masset
+`Massively` is a NodeJS app I host on [codemassively.com](https://www.codemassively.com). It's the last in a series of backends I author because `Express` felt bloated.
 
-Components  
---------------  
-__Immovable__  
-
-1. initializer.js
-  > Setup instance variables and set module locals  
-  > DB connections and being Cron jobs
-
-2. server.js  
-  > where connections are initialized; starts Socket handling or general POST/GET handling
-
-3. router.js  
-  > Determine how to route requests to the handler as defined by the initializer
-
-4. handler.js  
-  > Satisfies requests at the end of a pipe. 
-
-__Optional__  
-1. db_def.js  
-2. form_parser.js  
-3. scraper.js  
-4. session.js  
-5. socket_handler.js  
+## Perks 
+_I wrote this with 5 things in mind_  
+1. A server that **feels familiar** to beginners as an alternative to Express which is massive.  
+2. Loosely follow the _server->router->handler_ model from the **Node Beginner Book**.  
+3. Use a few strong tools, **SocketIO**, **Jade** templates, **MongoDB**.  
+4. Do **more with some**... As apposed to a lot, ideally a little but the project grew a little more.
+5. **Lightly implement** most things and keep dependencies low. 

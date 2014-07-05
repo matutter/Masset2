@@ -1,11 +1,160 @@
 doctype html
 html(lang="en")
   head
+    title #{nav[page]}
     link(rel='stylesheet', href='bootstrap.css')
- 
-    block content
+    link(rel='stylesheet', href='simplex.css')
+    link(rel='stylesheet', href='alteration.css')
+    script(type='text/javascript' src="jquery.js")
+    script(type='text/javascript' src="bootstrap.min.js")
+    script(type='text/javascript' src="universal.js")
+
+  body
+    .navbar.navbar-default(class="#{sError?'blur':''}")
+      .container
+        .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') 
+              strong @codemassively
+          .navbar-collapse.collapse.navbar-responsive-collapse
+            ul.nav.navbar-nav
+              -for( var tab in nav )
+                -if(tab == page) 
+                  li.active
+                    a(href='/#{tab}') #{tab}
+                -else
+                  li
+                    a(href='/#{tab}') #{tab}
+
+            ul.nav.navbar-nav.navbar-right  
+              li
+                a(href="#" data-toggle="modal" data-target="#{(session.user)?'#logoutModal':'#loginModal'}") #{ (session.user)?session.name:"Login" }
+
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  | more
+                  b.caret
+                ul.dropdown-menu
+                  li.dropdown-header general
+                  li
+                    a.blue(href="#" data-toggle="modal" data-target="#{(session.user)?'#logoutModal':'#loginModal'}") #{ (session.user)?"Logout":"Login" }
+                  - if( !session.user )
+                    li
+                      a.green( href="#" data-toggle="modal", data-target="#registerModel" ) Register
+
+                  li.divider
+                  li.dropdown-header tools
+                  li 
+                    a.yellow(href='/manage') manage
 
 
 
-    script(type='text/javascript' src="socket.io.js")
-    script(type='text/javascript' src="masset.js")
+    // nav end
+    section.content(class="#{sError?'blur':''}")
+      block content
+    -if( sError )
+      .modal.show()
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.exit.close(type='button', data-dismiss='modal', aria-hidden='true')
+                .glyphicon.glyphicon-remove
+              h4.modal-title Error
+            .modal-body
+              .alert.alert-danger
+                p #{sError}
+            .modal-footer
+              button.exit.btn.btn-default(type='button', data-dismiss='modal') Close
+
+    - if( session.user )
+      form.modal#logoutModal(name="logout" action="/logout" method="post")
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.exit.close(type='button', data-dismiss='modal', aria-hidden='true')
+                .glyphicon.glyphicon-remove
+              h4.modal-title Logout?
+            .modal-body 
+              p Byebye
+            .modal-footer
+              button.exit.btn.btn-default(type='button', data-dismiss='modal') Cancel
+              button.btn.btn-primary#btn-leave(type='submit') Yes, Leave
+
+    - else {
+      form.modal#loginModal(name="login" action="/login" method="post" )
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.exit.close(type='button', data-dismiss='modal', aria-hidden='true')
+                .glyphicon.glyphicon-remove
+              h4.modal-title Login
+            .modal-body 
+              .form-horizontal
+                fieldset
+                  .form-group
+                    label.col-lg-2.control-label(for='Username') Username
+                    .col-lg-10
+                      input.form-control#Username(type='text', name='Username', placeholder='Username')
+                  .form-group
+                    label.col-lg-2.control-label(for='Password') Password
+                    .col-lg-10
+                      input.form-control#Password(type='password', name='Password', placeholder='Password')
+            .modal-footer
+              button.exit.btn.btn-default(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary#btn-login(type='button') Submit
+
+
+      form.modal#registerModel(name="register" action="/register" method="post" )
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.exit.close(type='button', data-dismiss='modal', aria-hidden='true')
+                .glyphicon.glyphicon-remove
+              h4.modal-title Register
+            .modal-body 
+              .form-horizontal
+                fieldset
+                  .form-group
+                    label.col-lg-2.control-label(for='Username') Username
+                    .col-lg-10
+                      input.form-control#Username(type='text', name='Username', placeholder='Username')
+                  .form-group
+                    label.col-lg-2.control-label(for='Email') Email
+                    .col-lg-10
+                      input.form-control#Email(type='text', name='Email', placeholder='Email')
+                  .form-group
+                    label.col-lg-2.control-label(for='Password') Password
+                    .col-lg-10
+                      input.form-control#Password(type='password', name='Password', placeholder='Password')
+
+                  .form-group
+                    label.col-lg-2.control-label#Message(for='textArea' name='Message') Message
+                    .col-lg-10
+                      textarea#textArea.form-control(rows='3' placeholder="Leave a brief message about why you want comment access." )
+            .modal-footer
+              #alertTarget1
+              a.exit.btn.btn-default(type='button', data-dismiss='modal') Close
+              a.btn.btn-primary#btn-register(type='button') Submit
+      - }
+
+footer(class="#{sError?'blur':''}")
+  .container
+    .col-lg-12
+      ul.list-unstyled
+        li  
+          a(href="http://www.github.com/matutter") Mat Utter
+          | . Contact me at 
+          a(href='mailto:admin@codemassively.com') mat@codemassively.com.
+        li I maintain this code right 
+          a(href="https://github.com/matutter/Massively") here on Github
+          | .
+        li Built on 
+          a(href='http://nodejs.org/') NodeJS 
+          | for 
+          a(href='https://github.com/matutter/Masset2') Masset
+          | .
+        li Style based on 
+          a(href='http://bootswatch.com/simplex/') Simplex. 

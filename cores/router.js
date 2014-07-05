@@ -2,29 +2,48 @@ var local = {}
   , url = require('url')
   , path= require('path')
 
-function router( req, res, handle, db) {
+function router( req, res, handle, db, session, forms ) {
   var pathname = url.parse(req.url).pathname.replace(/\//,'')
-  var ext = path.extname(pathname).replace(/\./,'')
-  var page = path.basename(pathname)
+    , ext = path.extname(pathname).replace(/\./,'')
+    , page= path.basename(pathname)
+    , peer= null
+
+  /*see all requests by name*/
+  //console.log('[] '+pathname)
+
+    console.log( url.parse(req.url,true).query || "none" )
 
 
-  local.log({ label:'router', nodes: [{label:"req: "+pathname, nodes:["ext: "+ext,"path: "+pathname]} ] })
+  if( !ext.length && req.connection.remoteAddress || false ) {
+    var ip  = req.connection.remoteAddress
+      , id  = session.extract( req )
+
+      /*carry out all functions of the session, peer is the users stateful data*/
+      session.transact(req, ip, id, pathname, forms, function( peer, err ) {
+        if( err ) console.log( err )
+        console.log( pathname )
+        route(res, handle, pathname, page, ext, db, peer, err )
+      })
+
+  } else
+    route(res, handle, pathname, page, ext, db, null )
 
 
-  // route assets for known mimetypes
-  if( typeof handle.mimeType[ext] === 'string' )
-    return handle.std_content(res, handle.pathTo[ ext ], pathname, handle.mimeType[ext])
-  else
-  // route for regular page
-  if( typeof handle.pagePathTo[ page ] === 'function' )
-    return handle.pagePathTo[ page ]( res, page, db )
-/*  else
-  // is it a rare special case?
-  if( typeof handle.specialCase[pathname] === 'string')
-    return handle.specialCase[pathname](res)*/
-  else
-    return handle.error(pathname, page, ext, res)
 }
+
+function route(res, handle, pathname, page, ext, db, peer, err ) {
+  /*route assets for known mimetypes*/
+  if( typeof handle.mimeType[ext] === 'string' )
+    return handle.std_content(res, handle.pathTo[ ext ], pathname, handle.mimeType[ext], err)
+  else
+  /*route for regular page*/
+  if( typeof handle.pagePathTo[ page ] === 'function' )
+    return handle.pagePathTo[ page ]( res, page, db , peer || false, err )
+  else
+    return handle.error(res, pathname, page, ext, peer, err)
+}
+
+
 
 exports.route = router
 exports.locals  = local

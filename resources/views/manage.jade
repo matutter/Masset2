@@ -1,0 +1,99 @@
+extends layout
+block content
+  script(type='text/javascript' src="manage.js")
+  script(type='text/javascript' src="showdown.js")
+  link(rel='stylesheet', href='analyt.css')
+  - if( session.user )
+
+    .col-sm-2.analytic-nav
+      ul.nav.nav-pills.nav-stacked()
+        li.active
+          a(href='#New' data-toggle="tab") New Post
+        li
+          a(href='#Statistics' data-toggle="tab") Statistics
+        li
+          a(href='#Users' data-toggle="tab") Users
+        li.disabled
+          a(href='#Blog' data-toggle="tab") Blog
+        
+    .tab-content.high#tab-content
+      .col-sm-10.tab-pane.fade.active.in#New
+        .label-out
+          a.label#edit Edit
+          a.label#preview Preview
+          a.label.active#half Half
+        .col-sm-6#editor.nometric
+          form.panel.analytic-content(name="blogPost", method="post", action="blogPostSubmit")
+            .panel-body
+              .form-horizontal
+                fieldset
+
+                  .form-group
+                    label.col-lg-1.control-label(for='Title') Title
+                    .col-lg-11
+                      input#Title.form-control()
+
+                  .form-group
+                    label.col-lg-1.control-label(for='Header') Header
+                    .col-lg-11
+                      textarea#Header.form-control(rows='4')
+
+
+                  .form-group
+                    label.col-lg-1.control-label(for='Page') Page
+                    .col-lg-11
+                      ul.pagination.nobot.notop
+                          li
+                            a(href='#')
+                              .glyphicon.glyphicon-minus
+                          li.active
+                            a(href='#') 1
+                          li
+                            a(href='#')
+                              .glyphicon.glyphicon-plus
+
+
+                  .form-group
+                    label.col-lg-1.control-label(for='Body') Body
+                    .col-lg-11
+                      textarea#Body.form-control(rows='20')
+
+
+                  .form-group
+                    label.col-lg-1.control-label(for='Footer') Footer
+                    .col-lg-11
+                      textarea#Footer.form-control(rows='5')
+
+            .panel-footer.analytic-footer
+              button.btn.btn-primary Submit
+
+        .nometric.col-sm-6#previewer
+          .panel.blog-content
+            .panel-body
+              .col-sm-12#postTarget
+                .col-sm-12
+                  h1.center
+                    #TitleTarget
+                .col-sm-12.center
+                  #HeaderTarget
+                .col-sm-12#BodyTarget
+                .col-sm-12#FooterTarget
+
+
+
+      .col-sm-11.tab-pane.fade#Statistics
+        .panel.panel-default
+          .panel-heading Statistics
+            .panel-body
+              | Panel content
+
+      .col-sm-11.tab-pane.fade#Users
+        .panel.panel-default
+          .panel-heading User Manager
+            .panel-body
+              | Panel content
+
+  - else 
+    .jumbotron(style='text-align:center;').nostyle
+      .container
+        h1 This isn't for you.

@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  section.main
+    -if( !session.user ) {
+      .container#account
+        .col-lg-6.col-lg-offset-3
+          .well.account
+            
+            ul.nav.nav-tabs
+              li
+                a.select-one.active#login Login
+              li
+                a.select-one#signup Create Account
+
+            form.account-form(method="POST" action="")
+              .page-header
+                .row.text-center
+                  img.img-responsive.center-block(src='cmbox.png' width="200px" heigt="200px")
+
+              p.sign-up.text-center
+                small Blog posts are currently locked
+
+              .form-group
+                label Username
+                input.form-control#Username(name="Username" type="text")
+              .form-group
+                label Password
+                input.form-control#Password(name="Password" type="password")
+              .sign-up
+                .col-sm-6.half
+                  .form-group
+                    label.whole Email
+                      input.form-control.whole#Email(name="Email" type="text")
+                .col-sm-6.half
+                  .form-group
+                    label.whole Website URL
+                      input.form-control.whole#Website(name="Website" type="text")
+
+              .form-group#form-btn
+                a.btn.btn-success.sign-in-btn Login
+                a.btn.btn-default.sign-up-btn Create
+
+              -if(sError)
+                .alert.alert-danger #{sError}
+    - } else {
+      .container.manager
+        .col-md-6
+          .stack-box.sm
+            
+            h1 User: #{session.name}
+            label created #{session.view.dateCreated}
+          
+            h3 status 
+              -if(session.view.canPost)
+                .ok Active
+              -else
+                .bad Inactive
+            label Posts 0 | 0 | 0
+
+        .col-md-6
+          .stack-box.sm
+            table.table
+              tr
+                td Email 
+                td #{session.view.email}
+              tr
+                td Website 
+                td #{session.view.websiteURL}
+    - }
+
+

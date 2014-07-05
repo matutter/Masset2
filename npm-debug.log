@@ -1,0 +1,262 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install', 'jade' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'jade', null ]
+6 verbose cache add name=undefined spec="jade" args=["jade",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'jade',
+7 verbose parsed url   path: 'jade',
+7 verbose parsed url   href: 'jade' }
+8 silly lockFile 5bd60fae-jade jade
+9 verbose lock jade /root/.npm/5bd60fae-jade.lock
+10 silly lockFile 5bd60fae-jade jade
+11 silly lockFile 5bd60fae-jade jade
+12 verbose addNamed [ 'jade', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 51d481b2-jade jade@
+15 verbose lock jade@ /root/.npm/51d481b2-jade.lock
+16 silly addNameRange { name: 'jade', range: '*', hasData: false }
+17 verbose url raw jade
+18 verbose url resolving [ 'https://registry.npmjs.org/', './jade' ]
+19 verbose url resolved https://registry.npmjs.org/jade
+20 info trying registry request attempt 1 at 13:51:23
+21 verbose etag "8K452IASLWBUZXM6ZXMGIL2TM"
+22 http GET https://registry.npmjs.org/jade
+23 http 200 https://registry.npmjs.org/jade
+24 silly registry.get cb [ 200,
+24 silly registry.get   { date: 'Fri, 27 Jun 2014 02:51:24 GMT',
+24 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+24 silly registry.get     etag: '"2H5LMXIZW2KAID9QH8FYGTWZK"',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     'cache-control': 'max-age=30',
+24 silly registry.get     'content-length': '112667',
+24 silly registry.get     'accept-ranges': 'bytes',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     age: '218',
+24 silly registry.get     'x-served-by': 'cache-v36-ASH',
+24 silly registry.get     'x-cache': 'MISS',
+24 silly registry.get     'x-cache-hits': '0',
+24 silly registry.get     'x-timer': 'S1403837484.855155,VS0,VE9',
+24 silly registry.get     vary: 'Accept',
+24 silly registry.get     'keep-alive': 'timeout=10, max=50',
+24 silly registry.get     connection: 'Keep-Alive' } ]
+25 silly addNameRange number 2 { name: 'jade', range: '*', hasData: true }
+26 silly addNameRange versions [ 'jade',
+26 silly addNameRange   [ '0.0.1',
+26 silly addNameRange     '0.0.2',
+26 silly addNameRange     '0.1.0',
+26 silly addNameRange     '0.2.0',
+26 silly addNameRange     '0.2.1',
+26 silly addNameRange     '0.2.2',
+26 silly addNameRange     '0.2.3',
+26 silly addNameRange     '0.2.4',
+26 silly addNameRange     '0.3.0',
+26 silly addNameRange     '0.4.0',
+26 silly addNameRange     '0.4.1',
+26 silly addNameRange     '0.5.0',
+26 silly addNameRange     '0.5.1',
+26 silly addNameRange     '0.5.2',
+26 silly addNameRange     '0.5.3',
+26 silly addNameRange     '0.5.4',
+26 silly addNameRange     '0.5.5',
+26 silly addNameRange     '0.5.6',
+26 silly addNameRange     '0.5.7',
+26 silly addNameRange     '0.6.0',
+26 silly addNameRange     '0.6.1',
+26 silly addNameRange     '0.6.3',
+26 silly addNameRange     '0.7.0',
+26 silly addNameRange     '0.7.1',
+26 silly addNameRange     '0.8.0',
+26 silly addNameRange     '0.8.1',
+26 silly addNameRange     '0.8.2',
+26 silly addNameRange     '0.8.3',
+26 silly addNameRange     '0.8.4',
+26 silly addNameRange     '0.8.5',
+26 silly addNameRange     '0.8.6',
+26 silly addNameRange     '0.8.7',
+26 silly addNameRange     '0.8.8',
+26 silly addNameRange     '0.8.9',
+26 silly addNameRange     '0.9.0',
+26 silly addNameRange     '0.9.1',
+26 silly addNameRange     '0.9.2',
+26 silly addNameRange     '0.9.3',
+26 silly addNameRange     '0.10.0',
+26 silly addNameRange     '0.10.1',
+26 silly addNameRange     '0.10.2',
+26 silly addNameRange     '0.10.3',
+26 silly addNameRange     '0.10.4',
+26 silly addNameRange     '0.10.5',
+26 silly addNameRange     '0.10.6',
+26 silly addNameRange     '0.10.7',
+26 silly addNameRange     '0.11.0',
+26 silly addNameRange     '0.11.1',
+26 silly addNameRange     '0.12.0',
+26 silly addNameRange     '0.12.1',
+26 silly addNameRange     '0.12.2',
+26 silly addNameRange     '0.12.3',
+26 silly addNameRange     '0.12.4',
+26 silly addNameRange     '0.13.0',
+26 silly addNameRange     '0.14.0',
+26 silly addNameRange     '0.14.1',
+26 silly addNameRange     '0.14.2',
+26 silly addNameRange     '0.15.0',
+26 silly addNameRange     '0.15.1',
+26 silly addNameRange     '0.15.2',
+26 silly addNameRange     '0.15.3',
+26 silly addNameRange     '0.15.4',
+26 silly addNameRange     '0.16.0',
+26 silly addNameRange     '0.16.1',
+26 silly addNameRange     '0.16.2',
+26 silly addNameRange     '0.16.3',
+26 silly addNameRange     '0.16.4',
+26 silly addNameRange     '0.17.0',
+26 silly addNameRange     '0.18.0',
+26 silly addNameRange     '0.19.0',
+26 silly addNameRange     '0.20.0',
+26 silly addNameRange     '0.20.1',
+26 silly addNameRange     '0.20.2',
+26 silly addNameRange     '0.20.3',
+26 silly addNameRange     '0.21.0',
+26 silly addNameRange     '0.22.0',
+26 silly addNameRange     '0.22.1',
+26 silly addNameRange     '0.23.0',
+26 silly addNameRange     '0.24.0',
+26 silly addNameRange     '0.25.0',
+26 silly addNameRange     '0.26.0',
+26 silly addNameRange     '0.26.1',
+26 silly addNameRange     '0.26.2',
+26 silly addNameRange     '0.26.3',
+26 silly addNameRange     '0.27.0',
+26 silly addNameRange     '0.27.1',
+26 silly addNameRange     '0.27.2',
+26 silly addNameRange     '0.27.3',
+26 silly addNameRange     '0.27.4',
+26 silly addNameRange     '0.27.5',
+26 silly addNameRange     '0.27.6',
+26 silly addNameRange     '0.27.7',
+26 silly addNameRange     '0.28.0',
+26 silly addNameRange     '0.28.1',
+26 silly addNameRange     '0.28.2',
+26 silly addNameRange     '0.29.0',
+26 silly addNameRange     '0.30.0',
+26 silly addNameRange     '0.31.0',
+26 silly addNameRange     '0.31.1',
+26 silly addNameRange     '0.31.2',
+26 silly addNameRange     '0.32.0',
+26 silly addNameRange     '0.33.0',
+26 silly addNameRange     '0.34.0',
+26 silly addNameRange     '0.34.1',
+26 silly addNameRange     '0.35.0',
+26 silly addNameRange     '1.0.0',
+26 silly addNameRange     '1.0.1',
+26 silly addNameRange     '1.0.2',
+26 silly addNameRange     '1.1.0',
+26 silly addNameRange     '1.1.1',
+26 silly addNameRange     '1.1.2',
+26 silly addNameRange     '1.1.3',
+26 silly addNameRange     '1.1.4',
+26 silly addNameRange     '1.1.5',
+26 silly addNameRange     '1.2.0',
+26 silly addNameRange     '1.3.0',
+26 silly addNameRange     '1.3.1' ] ]
+27 verbose addNamed [ 'jade', '1.3.1' ]
+28 verbose addNamed [ '1.3.1', '1.3.1' ]
+29 silly lockFile 7666cb91-jade-1-3-1 jade@1.3.1
+30 verbose lock jade@1.3.1 /root/.npm/7666cb91-jade-1-3-1.lock
+31 silly lockFile 7666cb91-jade-1-3-1 jade@1.3.1
+32 silly lockFile 7666cb91-jade-1-3-1 jade@1.3.1
+33 silly lockFile 51d481b2-jade jade@
+34 silly lockFile 51d481b2-jade jade@
+35 silly resolved [ { name: 'jade',
+35 silly resolved     description: 'Jade template engine',
+35 silly resolved     version: '1.3.1',
+35 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+35 silly resolved     license: 'MIT',
+35 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/jade' },
+35 silly resolved     main: './index.js',
+35 silly resolved     bin: { jade: './bin/jade.js' },
+35 silly resolved     man: [ './jade.1' ],
+35 silly resolved     dependencies:
+35 silly resolved      { commander: '2.1.0',
+35 silly resolved        mkdirp: '~0.3.5',
+35 silly resolved        transformers: '2.1.0',
+35 silly resolved        'character-parser': '1.2.0',
+35 silly resolved        monocle: '1.1.51',
+35 silly resolved        with: '~3.0.0',
+35 silly resolved        constantinople: '~2.0.0' },
+35 silly resolved     devDependencies:
+35 silly resolved      { 'coffee-script': '*',
+35 silly resolved        mocha: '*',
+35 silly resolved        istanbul: '*',
+35 silly resolved        markdown: '*',
+35 silly resolved        stylus: '*',
+35 silly resolved        should: '*',
+35 silly resolved        less: '*',
+35 silly resolved        'uglify-js': '*',
+35 silly resolved        browserify: '*',
+35 silly resolved        linify: '*' },
+35 silly resolved     component: { scripts: [Object] },
+35 silly resolved     scripts:
+35 silly resolved      { test: 'mocha -R spec && npm run coverage',
+35 silly resolved        coverage: 'istanbul cover node_modules/mocha/bin/_mocha',
+35 silly resolved        prepublish: 'npm prune && linify transform bin && npm run build',
+35 silly resolved        build: 'npm run compile',
+35 silly resolved        compile: 'npm run compile-full && npm run compile-runtime',
+35 silly resolved        'compile-full': 'browserify ./lib/jade.js --standalone jade -x ./node_modules/transformers > jade.js',
+35 silly resolved        'compile-runtime': 'browserify ./lib/runtime.js --standalone jade > runtime.js' },
+35 silly resolved     browser: { './lib/filters.js': './lib/filters-client.js' },
+35 silly resolved     bugs: { url: 'https://github.com/visionmedia/jade/issues' },
+35 silly resolved     homepage: 'https://github.com/visionmedia/jade',
+35 silly resolved     _id: 'jade@1.3.1',
+35 silly resolved     dist:
+35 silly resolved      { shasum: '7483d848b8714dc50a40da98b0409790b374216b',
+35 silly resolved        tarball: 'http://registry.npmjs.org/jade/-/jade-1.3.1.tgz' },
+35 silly resolved     _from: 'jade@',
+35 silly resolved     _npmVersion: '1.3.21',
+35 silly resolved     _npmUser: { name: 'forbeslindesay', email: 'forbes@lindesay.co.uk' },
+35 silly resolved     maintainers: [ [Object], [Object] ],
+35 silly resolved     directories: {},
+35 silly resolved     _shasum: '7483d848b8714dc50a40da98b0409790b374216b',
+35 silly resolved     _resolved: 'https://registry.npmjs.org/jade/-/jade-1.3.1.tgz',
+35 silly resolved     readme: 'ERROR: No README data found!' } ]
+36 info install jade@1.3.1 into /home/mat/documents/Massively
+37 info installOne jade@1.3.1
+38 info /home/mat/documents/Massively/node_modules/jade unbuild
+39 info preuninstall jade@1.3.1
+40 info uninstall jade@1.3.1
+41 verbose true,/home/mat/documents/Massively/node_modules,/home/mat/documents/Massively/node_modules unbuild jade@1.3.1
+42 verbose /home/mat/documents/Massively/node_modules/.bin,[object Object] binRoot
+43 info /home/mat/documents/Massively/node_modules/jade unbuild
+44 info preuninstall jade@1.3.1
+45 info uninstall jade@1.3.1
+46 verbose true,/home/mat/documents/Massively/node_modules,/home/mat/documents/Massively/node_modules unbuild jade@1.3.1
+47 verbose /home/mat/documents/Massively/node_modules/.bin,[object Object] binRoot
+48 error error rolling back Error: Refusing to delete: /home/mat/documents/Massively/node_modules/.bin/jade not in /home/mat/documents/Massively/node_modules/jade
+48 error error rolling back     at clobberFail (/usr/local/lib/node_modules/npm/lib/utils/gently-rm.js:57:12)
+48 error error rolling back     at next (/usr/local/lib/node_modules/npm/lib/utils/gently-rm.js:43:14)
+48 error error rolling back     at /usr/local/lib/node_modules/npm/lib/utils/gently-rm.js:52:12
+48 error error rolling back     at Object.oncomplete (fs.js:107:15)
+48 error error rolling back  jade@1.3.1 { [Error: Refusing to delete: /home/mat/documents/Massively/node_modules/.bin/jade not in /home/mat/documents/Massively/node_modules/jade]
+48 error error rolling back   code: 'EEXIST',
+48 error error rolling back   path: '/home/mat/documents/Massively/node_modules/.bin/jade' }
+49 error Refusing to delete: /home/mat/documents/Massively/node_modules/.bin/jade not in /home/mat/documents/Massively/node_modules/jade
+File exists: /home/mat/documents/Massively/node_modules/.bin/jade
+Move it away, and try again.
+50 error System Linux 3.2.0-4-amd64
+51 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "jade"
+52 error cwd /home/mat/documents/Massively
+53 error node -v v0.10.29
+54 error npm -v 1.4.14
+55 error path /home/mat/documents/Massively/node_modules/.bin/jade
+56 error code EEXIST
+57 verbose exit [ 1, true ]
