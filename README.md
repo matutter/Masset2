@@ -1,4 +1,4 @@
-`Massively` is a NodeJS app I host on [codemassively.com](https://www.codemassively.com). It's the last in a series of backends I author because `Express` felt bloated.
+This is a NodeJS Backend, it tries to provide all the basics.  
 
 ## Perks 
 _I wrote this with 5 things in mind_  
