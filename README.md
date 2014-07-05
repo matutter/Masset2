@@ -2,9 +2,9 @@ Masset
 
 Components  
 --------------  
-
 __Immovable__  
-1. initializer.js  
+
+1. initializer.js
   > Setup instance variables and set module locals  
   > DB connections and being Cron jobs
 
